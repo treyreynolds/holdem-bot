@@ -1,10 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>{{title}}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <link rel="shortcut icon" href="/images/favicon.ico">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Texas Hold'em{{#if title}} - {{title}}{{/if}}</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.9/css/dataTables.bootstrap.css"/>
+
+    <!-- Custom styles for this template -->
+    <style>
+      body {
+        padding-top: 70px;
+      }
+    </style>
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
   </head>
+
   <body>
+
+    <!-- Fixed navbar -->
+    {{> navbar}}
+
+    <div class="container">
     {{{body}}}
+    </div> <!-- /container -->
+
+    <!-- Templates -->
+    <script id="playerTemplate" type="text/x-handlebars-template">
+      <div class="col-md-3">
+        <div class="card text-center" id={{id}}>
+          <div class="card-header">
+            {{name}}
+          </div>
+          <div class="card-block">
+            <h4 class="card-title">{{cards}}</h4>
+            <p class="card-text">
+              <dl class="result"></dl>
+            </p>
+          </div>
+          <div class="card-footer text-muted">
+            {{probability}}
+          </div>
+        </div>
+      </div>
+    </script>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/r/bs-3.3.5/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>
   </body>
 </html>

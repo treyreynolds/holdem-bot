@@ -1,0 +1,135 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="panel panel-info">
+      <div class="panel-heading">Options <span ng-bind="vm.data"></span></div>
+      <div class="panel-body">
+        <form class="form-inline" name="game-options" method="post">
+          <div class="form-group">
+            <label for="numberOfGames">Games to Simulate</label>
+            <input type="text" class="form-control" id="numberOfGames" placeholder="1" required>
+          </div>
+          <div class="form-group" style="margin-left: 20px; margin-right: 20px;">
+            <strong>Compile Results &nbsp;</strong>
+            <div class="material-switch pull-right">
+                <input id="compileResults" name="compileResults" type="checkbox" checked />
+                <label for="compileResults" class="label-success"></label>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Start the Game</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+<div class="col-sm-12">
+  <div class="panel panel-default">
+    <div class="panel-heading">Player Hands</div>
+    <div class="panel-body">
+      <div ng-show="!vm.players"><h4>LOADING BE PATIENT</h4></div>
+      <div class="row">
+        <div ng-repeat="p in vm.players" class="col-md-3">
+          <div class="panel text-center" ng-class="p.hand.winner ? 'panel-success' : 'panel-default'">
+            <div class="panel-heading" ng-bind="p.name"></div>
+            <div class="panel-body text-left hand">
+              <div class="row">
+                <div class="col-xs-6 left-card">
+                  <img ng-src="/images/svg-cards/{{p.hand.cards[0]}}.svg" class="pull-left" />
+                  <img ng-src="/images/svg-cards/{{p.hand.cards[1]}}.svg" class="pull-right" />
+                </div>
+                <div class="col-xs-6 right-card">
+                  <dt>Win Probability</dt>
+                  <dd class="text-success" ng-bind="p.hand.odds.winProbability"></dd>
+                  <dt>Hand Value</dt>
+                  <dd class="text-success" ng-bind="p.hand.riverRank.value"></dd>
+                </div>
+              </div>
+              <div class="row stats">
+                <div class="col-xs-12">
+                  <ul class="list-group">
+                    <li class="list-group-item" ng-class="p.hand.flopFolded ? 'disabled' : ''">
+                      <span class="badge" ng-bind="p.hand.flopFolded ? 'folded': 'Bet $0'"></span>
+                      Flop <small class='text-info' ng-bind="p.hand.flopRank.name"></small>
+                    </li>
+                    <li class="list-group-item" ng-class="p.hand.turnFolded ? 'disabled' : ''">
+                      <span class="badge" ng-bind="p.hand.turnFolded ? 'folded': 'Bet $0'"></span>
+                      Turn <small class='text-info' ng-bind="p.hand.turnRank.name"></small>
+                    </li>
+                    <li class="list-group-item" ng-class="p.hand.riverFolded ? 'disabled' : ''">
+                      <span class="badge" ng-bind="p.hand.riverFolded ? 'folded': 'Bet $0'"></span>
+                      River  <small class='text-info' ng-bind="p.hand.riverRank.name"></small>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="panel-footer text-muted" ng-bind="p.hand.riverRank.name"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-12">
+  <div class="panel panel-success">
+    <div class="panel-heading">Board</div>
+    <div class="panel-body">
+      <div class="row" id="board">
+        <div class='col-md-6'>
+          <div class="panel panel-info">
+            <div class="panel panel-heading">Flop</div>
+            <div class="panel-body">
+              <div class="card" ng-repeat="c in vm.flopCards">
+                <img ng-src="/images/svg-cards/{{c}}.svg" class="pull-left"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='col-md-3'>
+          <div class="panel panel-warning">
+            <div class="panel panel-heading">Turn</div>
+            <div class="panel-body">
+              <img ng-src="/images/svg-cards/{{vm.turnCard}}.svg" />
+            </div>
+          </div>
+        </div>
+        <div class='col-md-3'>
+          <div class="panel panel-danger">
+            <div class="panel panel-heading">River</div>
+            <div class="panel-body">
+              <img ng-src="/images/svg-cards/{{vm.riverCard}}.svg" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-12">
+  <div class="panel panel-default">
+    <div class="panel-heading">Results Analysis</div>
+    <div class="panel-body">
+      <table id="analysis" class="table table-striped">
+        <thead>
+          <tr>
+            <th>Hand</th>
+            <th>Times Won</th>
+            <th>Times Appeared</th>
+            <th>Percentage Won</th>
+            <th>Predicted Odds</th>
+            <th>Difference</th>
+          </tr>
+        </thead>
+
+      </table>
+    </div>
+  </div>
+</div>
+</div>

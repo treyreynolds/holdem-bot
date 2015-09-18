@@ -1,0 +1,22 @@
+<div class = "container">
+  <div class="wrapper">
+    <form action="/users/create" method="post" name="create" class="form-signin">
+        <h3 class="form-signin-heading">Create New User</h3>
+        <hr class="colorgraph"><br>
+
+        <input type="text" class="form-control" name="name" placeholder="Name" value="{{input.name}}" required autofocus="" />
+        <input type="text" class="form-control" name="email" placeholder="Email" value="{{input.email}}" type="email" required />
+        <input type="password" class="form-control" name="password" placeholder="Password" value="{{input.password}}" required />
+        <p class="text-center text-danger">
+          {{#each errors}}
+            {{this}}<br />
+          {{/each}}
+        </p>
+
+        <button class="btn btn-lg btn-success btn-block"  name="Submit" value="Create" type="Submit">Create</button>
+        <p class="text-center login-link">
+          <a href="/" class='text-primary'>Already have an account? Sign in here.</a>
+        </p>
+    </form>
+  </div>
+</div>

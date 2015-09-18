@@ -1,2 +1,26 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<div class = "container">
+  <div class="wrapper">
+    <form class="form-signin" name="login-form" id="login-form" method="post" action="/users/login">
+        <h3 class="form-signin-heading">Please Sign In</h3>
+        <hr class="colorgraph"><br>
+
+        <input type="text" class="form-control" name="email" placeholder="email" type="email" required autofocus="" />
+        <input type="password" class="form-control" name="password" placeholder="Password" required />
+        <div class="form-group" style="margin-left: 20px; margin-right: 20px;">
+            <strong>Stay Logged In</strong>
+            <div class="material-switch pull-right">
+                <input id="rememberMe" name="rememberMe" type="checkbox" checked />
+                <label for="rememberMe" class="label-success"></label>
+            </div>
+          </div>
+        {{#if error}}
+        <p class="text-center text-danger">{{error}}</p>
+        {{/if}}
+        <button class="btn btn-lg btn-primary btn-block"  name="submit" value="Log in" type="submit">Login</button>
+
+        <p class="text-center login-link">
+          <a href="/users/create" class='text-primary'>Don't have an account? Sign up here.</a>
+        </p>
+    </form>
+  </div>
+</div>
