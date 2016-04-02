@@ -39,7 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(expressSession(
     {
-        secret: 'getting hungry',
+        secret: 'you gotta know when to fold em',
         saveUninitialized: false,
         resave: false,
         store: new MongoStore({
